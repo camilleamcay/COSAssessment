@@ -1,8 +1,12 @@
 package io.cucumber.glue;
 
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.cucumber.core.Context;
 import io.cucumber.core.Manager;
+import io.cucumber.pages.ReadLink;
+import io.cucumber.pages.ReadLink.*;
+import org.junit.Assert;
 
 public class Navigation extends Context {
 
@@ -10,9 +14,9 @@ public class Navigation extends Context {
     super(manager);
   }
 
-  @Given("^the page under test is '(.+)'$")
-  public void navToPage(String url) {
-    manager.getDriver().get(url);
-    stash("exampleKey1", "exampleValue1");
+  @Then("verify all links are correct")
+  public void verifyLinks() {
+    var content = new io.cucumber.pages.ReadLink(getDriver());
+    Assert.assertEquals("content should ", true, content.checkList());
   }
 }
