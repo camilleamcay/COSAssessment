@@ -1,12 +1,13 @@
 package io.cucumber.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class Home extends Page {
 
-  public Home(ChromeDriver driver) {
+  //this helps call the driver/get url
+  public Home(WebDriver driver) {
     super(driver);
     System.out.println("Homepage title is : " + getTitle().getText());
   }
@@ -22,4 +23,5 @@ public class Home extends Page {
     driver.navigate().refresh();
     System.out.println("Refreshed page");
   }
+
 }
